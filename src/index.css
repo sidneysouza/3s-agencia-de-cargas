@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+:root {
+  --primary-green: #0c2217;
+  --accent-yellow: #F2D53C;
+  --text-gray: #666666;
+}
+
+@theme {
+  --color-primary: var(--primary-green);
+  --color-accent: var(--accent-yellow);
+  --font-inter: 'Inter', sans-serif;
+}
+
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #1a1a1a;
+  background-color: #ffffff;
+  scroll-behavior: smooth;
+}
+
+.bg-hero-overlay {
+  background: linear-gradient(rgba(12, 34, 23, 0.85), rgba(12, 34, 23, 0.7));
+}
+
+.glass-nav {
+  background: rgba(12, 34, 23, 0.95);
+  backdrop-filter: blur(8px);
+}
+
+/* Custom shadow for cards */
+.service-card-shadow {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.section-padding {
+  @apply py-16 md:py-24;
+}
