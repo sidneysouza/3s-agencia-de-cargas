@@ -1,4 +1,6 @@
 import React from 'react';
+import truckImage from '/assets/truck-hero-hq.jpg';
+import truckAboutImage from '/assets/truck-about-hq.jpg';
 
 // Icons
 const WhatsAppIcon = () => (
@@ -50,8 +52,8 @@ const App = () => {
               3S
             </div>
             <div className="flex flex-col">
-              <span className="text-white font-extrabold text-lg leading-none tracking-tight">3S Agência</span>
-              <span className="text-white/60 text-[10px] uppercase font-bold tracking-widest leading-none mt-1">De Cargas</span>
+              <span className="text-white font-extrabold text-lg leading-none tracking-tight">AGÊNCIA DE CARGAS</span>
+              <span className="text-white/60 text-[10px] font-bold tracking-widest leading-none mt-1">Transporte e Logística</span>
             </div>
           </div>
           <nav className="hidden lg:flex items-center gap-8">
@@ -60,9 +62,15 @@ const App = () => {
             <a href="#solutions" className="text-white/80 hover:text-accent font-bold text-sm tracking-wide transition-colors">SOLUÇÕES</a>
             <a href="#contact" className="text-white/80 hover:text-accent font-bold text-sm tracking-wide transition-colors">CONTATO</a>
           </nav>
-          <button className="bg-accent hover:bg-yellow-400 text-primary px-6 py-2.5 rounded-sm font-black text-sm tracking-wider transition-all shadow-xl hover:shadow-accent/40">
-            SOLICITAR COTAÇÃO
-          </button>
+          <a 
+            href="https://wa.me/65999829715" 
+            target="_blank" 
+            rel="noopener noreferrer"            
+          >
+            <button className="bg-accent hover:bg-yellow-400 text-primary px-6 py-2.5 rounded-sm font-black text-sm tracking-wider transition-all shadow-xl hover:shadow-accent/40">
+              SOLICITAR COTAÇÃO
+            </button>
+          </a>
         </div>
       </header>
 
@@ -70,7 +78,7 @@ const App = () => {
       <section id="home" className="relative min-h-[90vh] flex items-center pt-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/truck-hero-hq.jpg" 
+            src={truckImage} 
             alt="Transporte de Grãos de Alta Performance - 3S Agência" 
             className="w-full h-full object-cover"
           />
@@ -83,12 +91,14 @@ const App = () => {
           <p className="text-white/90 text-sm md:text-lg font-bold tracking-[0.2em] uppercase mb-10 max-w-3xl">
             Especialistas no transporte de grãos e logística pesada
           </p>
-          <button className="bg-accent hover:bg-yellow-400 text-primary px-10 py-4 font-black text-sm tracking-widest transition-all shadow-2xl hover:scale-105 active:scale-95">
-            NOSSOS SERVIÇOS
-          </button>
+          <a href="#solutions" >
+            <button className="bg-accent hover:bg-yellow-400 text-primary px-10 py-4 font-black text-sm tracking-widest transition-all shadow-2xl hover:scale-105 active:scale-95">
+              NOSSOS SERVIÇOS
+            </button>
+          </a>
         </div>
         <a 
-          href="https://wa.me/yournumber" 
+          href="https://wa.me/65999829715" 
           target="_blank" 
           rel="noopener noreferrer"
           className="fixed bottom-8 right-8 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-90 transition-transform"
@@ -103,7 +113,7 @@ const App = () => {
           <div className="relative group">
             <div className="absolute -inset-2 bg-accent opacity-20 blur-2xl group-hover:opacity-30 transition-opacity"></div>
             <img 
-              src="/truck-about-hq.jpg" 
+              src={truckAboutImage} 
               alt="Sobre a 3S Agência - Logística de Alta Performance" 
               className="relative rounded-lg shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
             />
@@ -191,9 +201,15 @@ const App = () => {
             />
           </div>
           
-          <button className="bg-accent hover:bg-yellow-400 text-primary px-12 py-5 font-black text-sm tracking-widest shadow-2xl transition-all">
-            FAÇA SUA COTAÇÃO
-          </button>
+          <a 
+            href="https://wa.me/65999829715" 
+            target="_blank" 
+            rel="noopener noreferrer"            
+          >
+            <button className="bg-accent hover:bg-yellow-400 text-primary px-12 py-5 font-black text-sm tracking-widest shadow-2xl transition-all">
+              FAÇA SUA COTAÇÃO
+            </button>
+          </a>
         </div>
       </section>
 
@@ -255,17 +271,17 @@ const App = () => {
           <div className="space-y-10">
             <ContactInfo 
               label="Telefones" 
-              value="(11) 9999-9999 / (11) 4444-4444" 
+              value="(65) 3667-1576 / (65) 99982-9715" 
               icon={<div className="w-10 h-10 border border-white/20 flex items-center justify-center text-accent">☎</div>} 
             />
             <ContactInfo 
               label="E-mail" 
-              value="contato@3sagencia.com.br" 
+              value="agenciadecargas3s@hotmail.com" 
               icon={<div className="w-10 h-10 border border-white/20 flex items-center justify-center text-accent">✉</div>} 
             />
             <ContactInfo 
               label="Endereço" 
-              value="Av. Paulista, 1000 - Bela Vista, São Paulo - SP, 01310-100" 
+              value="Rodovia BR 364, Km 401, Sala 04 (anexo ao Posto Sao Mateus) - Distrito Industrial - Cuiabá-MT, 78015-285" 
               icon={<MapPinIcon className="w-10 h-10 border border-white/20 p-2 text-accent"/>} 
             />
           </div>
@@ -298,10 +314,10 @@ const App = () => {
               <h4 className="text-accent font-black text-xs tracking-widest uppercase mb-8">Suporte</h4>
               <ul className="space-y-4 text-white/40 text-xs font-bold tracking-widest uppercase">
                 <li className="flex items-center gap-2">
-                  <span className="text-accent">•</span> (11) 9999-9999
+                  <span className="text-accent">•</span> (65) 3667-1576 / (65) 99982-9715
                 </li>
                 <li className="flex items-center gap-2 font-lowercase lowercase">
-                  <span className="text-accent">✉</span> comercial@3sagencia.com.br
+                  <span className="text-accent">✉</span> agenciadecargas3s@hotmail.com
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-accent">🕒</span> Seg - Sex: 08h às 18h
@@ -312,7 +328,7 @@ const App = () => {
           
           <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-bold tracking-widest uppercase text-white/20">
             <p>Copyright © 2024 3S Agência de Cargas. Todos os direitos reservados.</p>
-            <p>Desenvolvido por <span className="text-accent">Agência 3S</span></p>
+            {/* <p>Desenvolvido por <span className="text-accent">ia 3S</span></p> */}
           </div>
         </div>
       </footer>
@@ -346,7 +362,7 @@ const ContactInfo = ({ label, value, icon }: { label: string, value: string, ico
     {icon}
     <div>
       <span className="block text-[10px] uppercase font-bold tracking-[0.2em] text-white/40 mb-1">{label}</span>
-      <span className="font-bold text-lg md:text-xl">{value}</span>
+      <span className="font-medium text-md md:text-md text-white/90">{value}</span>
     </div>
   </div>
 );
