@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Clock, MapPinnedIcon, Phone } from 'lucide-react';
 import { Mail} from 'lucide-react'
 import truckImage from '/assets/truck-hero-hq.jpg';
 import truckAboutImage from '/assets/truck-about-hq.jpg';
+import logoImage from '/assets/logo.png';
 
 
 // Icons
@@ -45,25 +46,64 @@ const MapPinIcon = ({ className }: { className?: string }) => (
 );
 
 const App = () => {
+  const [activeSection, setActiveSection] = useState('');
+
+  useEffect(() => {
+    const sections = ['home', 'about', 'solutions', 'contact'];
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: '-40% 0px -40% 0px', // Leaves a 20% active area in the middle
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        } else {
+          // Clear active section if it's the one that just left the visible area
+          setActiveSection((prev) => (prev === entry.target.id ? '' : prev));
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => {
+      sections.forEach((id) => {
+        const element = document.getElementById(id);
+        if (element) observer.unobserve(element);
+      });
+    };
+  }, []);
+
+  const getNavLinkClass = (id: string) => {
+    return activeSection === id 
+      ? "text-accent font-bold text-sm tracking-wide transition-colors" 
+      : "text-white/80 hover:text-accent font-bold text-sm tracking-wide transition-colors";
+  };
+
   return (
     <div className="font-inter">
       {/* Header */}
       <header className="fixed top-0 left-0 w-full z-50 glass-nav border-b border-white/10">
         <div className="container mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center font-black text-primary text-xl shadow-lg">
-              3S
-            </div>
+            <img src={logoImage} alt="3S Logo" className="w-32 h-32 object-contain" />
             <div className="flex flex-col">
-              <span className="text-white font-extrabold text-lg leading-none tracking-tight">AGÊNCIA DE CARGAS</span>
+              <span className="text-white font-extrabold text-lg leading-none tracking-tight">3S AGÊNCIA DE CARGAS</span>
               <span className="text-white/60 text-[10px] font-bold tracking-widest leading-none mt-1">Transporte e Logística</span>
             </div>
           </div>
           <nav className="hidden lg:flex items-center gap-8">
-            <a href="#home" className="text-accent font-bold text-sm tracking-wide">HOME</a>
-            <a href="#about" className="text-white/80 hover:text-accent font-bold text-sm tracking-wide transition-colors">QUEM SOMOS</a>
-            <a href="#solutions" className="text-white/80 hover:text-accent font-bold text-sm tracking-wide transition-colors">SOLUÇÕES</a>
-            <a href="#contact" className="text-white/80 hover:text-accent font-bold text-sm tracking-wide transition-colors">CONTATO</a>
+            <a href="#home" className={getNavLinkClass('home')}>HOME</a>
+            <a href="#about" className={getNavLinkClass('about')}>QUEM SOMOS</a>
+            <a href="#solutions" className={getNavLinkClass('solutions')}>SOLUÇÕES</a>
+            <a href="#contact" className={getNavLinkClass('contact')}>CONTATO</a>
           </nav>
           <a 
             href="https://wa.me/65999829715" 
@@ -261,7 +301,7 @@ const App = () => {
         </div>
         <div className="section-padding px-4 md:px-16 lg:px-24 border-l border-l-primary/20 text-primary flex flex-col justify-center">
           <div className="flex items-center gap-4 mb-14">
-            <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center font-black text-primary text-2xl">3S</div>
+            <img src={logoImage} alt="3S Logo" className="w-12 h-12 object-contain" />
             <div className="flex flex-col">
               <span className="font-extrabold text-2xl leading-none tracking-tight">3S Agência</span>
               <span className="text-primary/40 text-xs uppercase font-bold tracking-[0.2em] mt-1">De Cargas e Logística</span>
@@ -294,8 +334,8 @@ const App = () => {
           <div className="grid md:grid-cols-4 gap-12 mb-20">
             <div className="col-span-1 md:col-span-2">
                <div className="flex items-center gap-3 mb-8">
-                <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center font-black text-primary text-base">3S</div>
-                <span className="font-extrabold text-xl leading-none">3S Agência de Cargas</span>
+                <img src={logoImage} alt="3S Logo" className="w-16 h-16 object-contain" />
+                <span className="font-extrabold text-md leading-none">3S AGÊNCIA DE CARGAS</span>
               </div>
               <p className="text-white/40 text-sm leading-relaxed max-w-sm">
                 Sua parceira estratégica em logística e transportes, especializada em escoamento de safras e logística pesada. Conectamos o campo à indústria com segurança total.
@@ -304,10 +344,10 @@ const App = () => {
             <div>
               <h4 className="text-accent font-black text-xs tracking-widest uppercase mb-8">Mapa do Site</h4>
               <ul className="space-y-4 text-xs font-bold uppercase tracking-widest">
-                <li><a href="#home" className="hover:text-accent transition-colors">Home</a></li>
-                <li><a href="#about" className="text-white/40 hover:text-accent transition-colors">Quem Somos</a></li>
-                <li><a href="#solutions" className="text-white/40 hover:text-accent transition-colors">Soluções Logísticas</a></li>
-                <li><a href="#contact" className="text-white/40 hover:text-accent transition-colors">Fale Conosco</a></li>
+                <li><a href="#home" className={activeSection === 'home' ? 'text-accent' : 'hover:text-accent transition-colors'}>Home</a></li>
+                <li><a href="#about" className={activeSection === 'about' ? 'text-accent' : 'text-white/40 hover:text-accent transition-colors'}>Quem Somos</a></li>
+                <li><a href="#solutions" className={activeSection === 'solutions' ? 'text-accent' : 'text-white/40 hover:text-accent transition-colors'}>Soluções Logísticas</a></li>
+                <li><a href="#contact" className={activeSection === 'contact' ? 'text-accent' : 'text-white/40 hover:text-accent transition-colors'}>Fale Conosco</a></li>
               </ul>
             </div>
             <div>
