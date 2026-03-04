@@ -43,3 +43,10 @@ body {
 .section-padding {
   @apply py-16 md:py-24;
 }
+
+.parallax-hero {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

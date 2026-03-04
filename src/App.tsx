@@ -1,6 +1,9 @@
 import React from 'react';
+import { Clock, MapPinnedIcon, Phone } from 'lucide-react';
+import { Mail} from 'lucide-react'
 import truckImage from '/assets/truck-hero-hq.jpg';
 import truckAboutImage from '/assets/truck-about-hq.jpg';
+
 
 // Icons
 const WhatsAppIcon = () => (
@@ -76,12 +79,10 @@ const App = () => {
 
       {/* Hero */}
       <section id="home" className="relative min-h-[90vh] flex items-center pt-24 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src={truckImage} 
-            alt="Transporte de Grãos de Alta Performance - 3S Agência" 
-            className="w-full h-full object-cover"
-          />
+        <div 
+          className="absolute inset-0 z-0 parallax-hero"
+          style={{ backgroundImage: `url(${truckImage})` }}
+        >
           <div className="absolute inset-0 bg-hero-overlay"></div>
         </div>
         <div className="container mx-auto px-4 md:px-8 relative z-10 text-center flex flex-col items-center">
@@ -108,7 +109,7 @@ const App = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="section-padding bg-white relative overflow-hidden">
+      <section id="about" className="section-padding bg-[#e2e2e2] relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-16 items-center">
           <div className="relative group">
             <div className="absolute -inset-2 bg-accent opacity-20 blur-2xl group-hover:opacity-30 transition-opacity"></div>
@@ -156,8 +157,7 @@ const App = () => {
               { num: '05', title: 'Destino', desc: 'Entrega final em portos, armazéns ou indústrias.', icon: <MapPinIcon className="w-8 h-8"/> },
             ].map((step, idx) => (
               <div key={idx} className="flex flex-col items-center">
-                <div className="relative mb-6">
-                  <span className="text-6xl font-black text-white/5 absolute -top-4 left-1/2 -translate-x-1/2 select-none">{step.num}</span>
+                <div className="relative mb-6">                  
                   <div className="w-20 h-20 rounded-full border-2 border-accent text-accent flex items-center justify-center relative z-10 bg-primary">
                     {step.icon}
                   </div>
@@ -214,7 +214,7 @@ const App = () => {
       </section>
 
       {/* Segments Section */}
-      <section className="section-padding bg-[#f8f9fa]">
+      <section className="section-padding bg-accent">
         <div className="container mx-auto px-4 md:px-8 text-center">
           <p className="text-text-gray font-bold text-xs tracking-[0.3em] uppercase mb-4 opacity-50">Especialistas por segmento</p>
           <h2 className="text-3xl md:text-[2.75rem] font-black text-primary mb-20 leading-tight">Como a 3S pode ajudar você</h2>
@@ -228,43 +228,43 @@ const App = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="grid lg:grid-cols-2">
-        <div className="section-padding px-4 md:px-16 lg:px-24 bg-white">
+      <section id="contact" className="grid lg:grid-cols-2 bg-accent">
+        <div className="section-padding px-4 md:px-16 lg:px-24">
           <h2 className="text-4xl font-black text-primary mb-10">Fale Conosco</h2>
           <form className="space-y-6">
             <input 
               type="text" 
               placeholder="Seu Nome Completo" 
-              className="w-full border-b-2 border-primary/10 py-4 focus:border-accent outline-none transition-colors font-bold text-sm"
+              className="w-full border-b-2 border-primary/10 py-4 focus:border-primary outline-none transition-colors font-bold text-sm"
             />
             <div className="grid md:grid-cols-2 gap-6">
               <input 
                 type="email" 
                 placeholder="E-mail Corporativo" 
-                className="w-full border-b-2 border-primary/10 py-4 focus:border-accent outline-none transition-colors font-bold text-sm"
+                className="w-full border-b-2 border-primary/10 py-4 focus:border-primary outline-none transition-colors font-bold text-sm"
               />
               <input 
                 type="tel" 
                 placeholder="Telefone de Contato" 
-                className="w-full border-b-2 border-primary/10 py-4 focus:border-accent outline-none transition-colors font-bold text-sm"
+                className="w-full border-b-2 border-primary/10 py-4 focus:border-primary outline-none transition-colors font-bold text-sm"
               />
             </div>
             <textarea 
               placeholder="Como podemos ajudar sua logística?" 
-              rows={4} 
-              className="w-full border-b-2 border-primary/10 py-4 focus:border-accent outline-none transition-colors font-bold text-sm resize-none"
+              // rows={} 
+              className="w-full border-b-2 border-primary/10 py-4 focus:border-primary outline-none transition-colors font-bold text-sm resize-none"
             ></textarea>
             <button className="bg-primary hover:bg-black text-white px-10 py-4 font-black text-sm tracking-widest transition-all">
               ENVIAR MENSAGEM
             </button>
           </form>
         </div>
-        <div className="section-padding px-4 md:px-16 lg:px-24 bg-primary text-white flex flex-col justify-center">
+        <div className="section-padding px-4 md:px-16 lg:px-24 border-l border-l-primary/20 text-primary flex flex-col justify-center">
           <div className="flex items-center gap-4 mb-14">
             <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center font-black text-primary text-2xl">3S</div>
             <div className="flex flex-col">
               <span className="font-extrabold text-2xl leading-none tracking-tight">3S Agência</span>
-              <span className="text-white/40 text-xs uppercase font-bold tracking-[0.2em] mt-1">De Cargas e Logística</span>
+              <span className="text-primary/40 text-xs uppercase font-bold tracking-[0.2em] mt-1">De Cargas e Logística</span>
             </div>
           </div>
           
@@ -272,17 +272,17 @@ const App = () => {
             <ContactInfo 
               label="Telefones" 
               value="(65) 3667-1576 / (65) 99982-9715" 
-              icon={<div className="w-10 h-10 border border-white/20 flex items-center justify-center text-accent">☎</div>} 
+              icon={<div className="w-10 h-10 border border-primary/30 flex items-center justify-center text-primary"><Phone size={'1em'} /></div>} 
             />
             <ContactInfo 
               label="E-mail" 
               value="agenciadecargas3s@hotmail.com" 
-              icon={<div className="w-10 h-10 border border-white/20 flex items-center justify-center text-accent">✉</div>} 
+              icon={<div className="w-10 h-10 border border-primary/30 flex items-center justify-center text-primary"><Mail size={'1em'} /></div>} 
             />
             <ContactInfo 
               label="Endereço" 
               value="Rodovia BR 364, Km 401, Sala 04 (anexo ao Posto Sao Mateus) - Distrito Industrial - Cuiabá-MT, 78015-285" 
-              icon={<MapPinIcon className="w-10 h-10 border border-white/20 p-2 text-accent"/>} 
+              icon={<div className="w-10 h-10 border border-primary/30 flex items-center justify-center text-primary"><MapPinnedIcon size={'1em'} /></div>} 
             />
           </div>
         </div>
@@ -314,20 +314,20 @@ const App = () => {
               <h4 className="text-accent font-black text-xs tracking-widest uppercase mb-8">Suporte</h4>
               <ul className="space-y-4 text-white/40 text-xs font-bold tracking-widest uppercase">
                 <li className="flex items-center gap-2">
-                  <span className="text-accent">•</span> (65) 3667-1576 / (65) 99982-9715
+                  <span className="text-accent"><Phone size={'1em'} /></span> (65) 3667-1576 / (65) 99982-9715
                 </li>
                 <li className="flex items-center gap-2 font-lowercase lowercase">
-                  <span className="text-accent">✉</span> agenciadecargas3s@hotmail.com
+                  <span className="text-accent"><Mail size={'1em'} /></span> agenciadecargas3s@hotmail.com
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-accent">🕒</span> Seg - Sex: 08h às 18h
+                  <span className="text-accent"><Clock size={'1em'} /></span> Seg - Sex: 08h às 18h
                 </li>
               </ul>
             </div>
           </div>
           
-          <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-bold tracking-widest uppercase text-white/20">
-            <p>Copyright © 2024 3S Agência de Cargas. Todos os direitos reservados.</p>
+          <div className="pt-10 border-t border-white/15 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-medium tracking-widest uppercase text-white/40">
+            <p>Copyright © {new Date().getFullYear()} 3S Agência de Cargas. Todos os direitos reservados.</p>
             {/* <p>Desenvolvido por <span className="text-accent">ia 3S</span></p> */}
           </div>
         </div>
@@ -361,8 +361,8 @@ const ContactInfo = ({ label, value, icon }: { label: string, value: string, ico
   <div className="flex gap-6 items-center">
     {icon}
     <div>
-      <span className="block text-[10px] uppercase font-bold tracking-[0.2em] text-white/40 mb-1">{label}</span>
-      <span className="font-medium text-md md:text-md text-white/90">{value}</span>
+      <span className="block text-[10px] uppercase font-bold tracking-[0.2em] text-primary/40 mb-1">{label}</span>
+      <span className="font-medium text-md md:text-md text-primary/90">{value}</span>
     </div>
   </div>
 );
